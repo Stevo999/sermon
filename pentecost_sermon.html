@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Pentecost – Rev Ruth Wambui</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #6B1A2A;
+    --burgundy-dark: #4A0F1C;
+    --burgundy-light: #8B2A3F;
+    --gold: #C9922A;
+    --gold-light: #E8B84B;
+    --gold-pale: #F5E6C0;
+    --ember: #D4521A;
+    --cream: #FBF7F0;
+    --white: #FFFFFF;
+    --text-dark: #2A1A10;
+    --text-mid: #4A3020;
+    --text-light: #6A4A30;
+    --shadow-warm: rgba(107,26,42,0.14);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text-dark); line-height:1.78; overflow-x:hidden; }
+
+  /* HERO */
+  .hero {
+    position:relative; min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden; padding:60px 24px 80px;
+    background: linear-gradient(160deg, var(--burgundy-dark) 0%, var(--burgundy) 45%, #8B3020 75%, #C05020 100%);
+  }
+  .rays { position:absolute;inset:0; background:radial-gradient(ellipse at 50% 30%, rgba(232,184,75,0.16) 0%, transparent 65%); pointer-events:none; }
+  .flames { position:absolute;inset:0; pointer-events:none; overflow:hidden; }
+  .flame { position:absolute; bottom:-20px; border-radius:50% 50% 30% 30%; opacity:0; animation:riseFlame linear infinite; }
+  @keyframes riseFlame {
+    0%   { opacity:0; transform:translateY(0) scaleX(1); }
+    10%  { opacity:0.55; }
+    80%  { opacity:0.15; }
+    100% { opacity:0; transform:translateY(-110vh) scaleX(0.4) rotate(15deg); }
+  }
+  .dove-wrap { position:absolute; top:6%; right:7%; opacity:0.16; width:110px; animation:floatDove 6s ease-in-out infinite; }
+  @keyframes floatDove { 0%,100%{transform:translateY(0) rotate(-4deg);} 50%{transform:translateY(-14px) rotate(4deg);} }
+
+  .h-eyebrow { font-family:'Cinzel',serif; font-size:.72rem; letter-spacing:.38em; color:var(--gold-light); text-transform:uppercase; margin-bottom:18px; opacity:0; animation:fadeUp .9s .2s forwards; }
+  .h-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.6rem,7vw,5.2rem); font-weight:600; color:#fff; line-height:1.1; margin-bottom:14px; opacity:0; animation:fadeUp .9s .4s forwards; text-shadow:0 4px 30px rgba(0,0,0,.4); }
+  .h-title em { color:var(--gold-light); font-style:italic; }
+  .h-rule { width:56px; height:2px; background:var(--gold-light); margin:14px auto 18px; opacity:0; animation:fadeUp .9s .55s forwards; }
+  .h-speaker { font-family:'Cinzel',serif; font-size:.97rem; color:var(--gold-pale); letter-spacing:.1em; margin-bottom:6px; opacity:0; animation:fadeUp .9s .65s forwards; }
+  .h-reading { font-size:.88rem; color:rgba(255,255,255,.68); letter-spacing:.08em; margin-bottom:36px; opacity:0; animation:fadeUp .9s .75s forwards; }
+  .h-btn { display:inline-block; padding:13px 36px; border:2px solid var(--gold-light); border-radius:50px; color:var(--gold-light); font-family:'Cinzel',serif; font-size:.76rem; letter-spacing:.22em; text-decoration:none; text-transform:uppercase; transition:all .3s; opacity:0; animation:fadeUp .9s .9s forwards; background:transparent; cursor:pointer; }
+  .h-btn:hover { background:var(--gold-light); color:var(--burgundy-dark); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+
+  /* LAYOUT */
+  .wrap { max-width:860px; margin:0 auto; padding:0 22px; }
+  section { padding:68px 0; }
+  .sec-label { font-family:'Cinzel',serif; font-size:.68rem; letter-spacing:.38em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:10px; }
+  .sec-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,4.5vw,2.75rem); font-weight:600; color:var(--burgundy); line-height:1.2; margin-bottom:8px; }
+  .sec-rule { width:46px; height:3px; background:linear-gradient(90deg,var(--gold),var(--ember)); border-radius:2px; margin-bottom:26px; }
+  .body { font-size:1.02rem; color:var(--text-mid); line-height:1.85; }
+  .body + .body { margin-top:14px; }
+
+  /* SCRIPTURE BOX */
+  .scr { border-left:4px solid var(--gold); background:linear-gradient(to right,var(--gold-pale),transparent); padding:14px 18px; border-radius:0 12px 12px 0; margin:18px 0; }
+  .scr-ref { font-family:'Cinzel',serif; font-size:.68rem; color:var(--gold); letter-spacing:.2em; display:block; margin-bottom:5px; }
+  .scr p { font-family:'Cormorant Garamond',serif; font-size:1.07rem; font-style:italic; color:var(--text-dark); line-height:1.6; }
+
+  /* WHITE CARD */
+  .card { background:var(--white); border-radius:18px; padding:30px 30px; box-shadow:0 8px 38px var(--shadow-warm); border-top:4px solid var(--gold); margin-bottom:22px; transition:transform .3s,box-shadow .3s; }
+  .card:hover { transform:translateY(-4px); box-shadow:0 16px 50px rgba(107,26,42,.16); }
+  .card h3 { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:600; color:var(--burgundy); margin-bottom:12px; }
+
+  /* GRID 2 */
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px; }
+  @media(max-width:600px){ .grid2{ grid-template-columns:1fr; } }
+
+  /* TIMELINE */
+  .timeline { display:flex; align-items:flex-start; justify-content:space-between; margin:36px 0; position:relative; flex-wrap:wrap; gap:12px; }
+  .timeline::before { content:''; position:absolute; top:27px; left:8%; right:8%; height:2px; background:linear-gradient(90deg,var(--gold),var(--ember)); z-index:0; }
+  @media(max-width:580px){ .timeline::before{display:none;} .timeline{flex-direction:column;gap:14px;} }
+  .tstep { flex:1; text-align:center; position:relative; z-index:1; min-width:70px; }
+  .tdot { width:54px;height:54px; border-radius:50%; background:linear-gradient(135deg,var(--burgundy),var(--ember)); display:flex;align-items:center;justify-content:center; margin:0 auto 9px; font-size:1.2rem; box-shadow:0 4px 18px rgba(107,26,42,.28); }
+  .tlabel { font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.12em; color:var(--burgundy); text-transform:uppercase; }
+  .tsub { font-size:.78rem; color:var(--text-light); margin-top:3px; }
+
+  /* EVENT CARDS */
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:28px; }
+  @media(max-width:680px){ .grid3{ grid-template-columns:1fr; } }
+  .ev { border-radius:18px; padding:30px 20px 26px; text-align:center; box-shadow:0 8px 34px rgba(107,26,42,.1); transition:transform .3s; position:relative; }
+  .ev:hover { transform:translateY(-6px); }
+  .ev.wind  { background:linear-gradient(160deg,#EAF4FF,#F0F8FF); border-top:4px solid #6B9FC0; }
+  .ev.fire  { background:linear-gradient(160deg,#FFF0E8,#FFF8F0); border-top:4px solid var(--ember); }
+  .ev.lang  { background:linear-gradient(160deg,#F5F0FF,#FAF7FF); border-top:4px solid #8B60C0; }
+  .ev-icon { font-size:2.4rem; margin-bottom:10px; display:block; }
+  .ev h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:var(--burgundy); margin-bottom:9px; }
+  .ev p { font-size:.88rem; color:var(--text-light); line-height:1.72; }
+  .ev-ref { display:inline-block; margin-top:10px; font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.14em; color:var(--gold); background:var(--gold-pale); padding:3px 10px; border-radius:20px; }
+
+  /* SERMON DARK SECTION */
+  .sermon-box { background:linear-gradient(160deg,var(--burgundy-dark),var(--burgundy-light)); border-radius:22px; padding:50px 42px; color:#fff; box-shadow:0 24px 68px rgba(74,15,28,.34); position:relative; overflow:hidden; }
+  .sermon-box::after { content:''; position:absolute; bottom:-60px;left:-60px; width:260px;height:260px; background:radial-gradient(circle,rgba(212,82,26,.22) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
+  .sermon-box .sec-title { color:var(--gold-light); }
+  .sermon-box .sec-rule { background:linear-gradient(90deg,var(--gold-light),transparent); }
+  .sermon-box .body { color:rgba(255,255,255,.85); }
+  .sermon-pts { list-style:none; margin:22px 0; }
+  .sermon-pts li { display:flex; gap:12px; align-items:flex-start; margin-bottom:13px; font-size:.96rem; color:rgba(255,255,255,.85); }
+  .sermon-pts li::before { content:'✦'; color:var(--gold-light); flex-shrink:0; margin-top:2px; }
+  .bquote { background:rgba(255,255,255,.1); border-left:4px solid var(--gold-light); border-radius:0 14px 14px 0; padding:18px 22px; margin:22px 0; }
+  .bquote p { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,3.5vw,1.85rem); font-style:italic; font-weight:300; color:var(--gold-pale); line-height:1.45; }
+  .stat-pill { display:inline-block; background:var(--gold); color:var(--burgundy-dark); font-family:'Cinzel',serif; font-size:.78rem; font-weight:600; letter-spacing:.1em; padding:8px 20px; border-radius:40px; margin-top:14px; }
+
+  /* LESSONS */
+  .lesson { display:grid; grid-template-columns:76px 1fr; gap:22px; align-items:start; background:var(--white); border-radius:20px; padding:30px 28px; box-shadow:0 8px 38px var(--shadow-warm); transition:transform .3s,box-shadow .3s; border-right:4px solid var(--gold); margin-bottom:24px; }
+  .lesson:hover { transform:translateX(6px); box-shadow:0 14px 50px rgba(107,26,42,.16); }
+  @media(max-width:500px){ .lesson{grid-template-columns:1fr;} }
+  .lnum { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; line-height:1; color:var(--gold-light); opacity:.55; text-align:center; }
+  .lbody h3 { font-family:'Cormorant Garamond',serif; font-size:1.45rem; font-weight:600; color:var(--burgundy); margin-bottom:6px; }
+  .lref { font-family:'Cinzel',serif; font-size:.63rem; letter-spacing:.15em; color:var(--gold); background:var(--gold-pale); padding:3px 10px; border-radius:20px; display:inline-block; margin-bottom:13px; }
+  .lbody p { font-size:.96rem; color:var(--text-mid); line-height:1.82; margin-bottom:10px; }
+  .lquote { background:var(--gold-pale); border-left:3px solid var(--gold); padding:11px 15px; border-radius:0 10px 10px 0; font-family:'Cormorant Garamond',serif; font-size:1.08rem; font-style:italic; color:var(--burgundy); margin-top:10px; }
+  .rq { display:flex; align-items:center; gap:9px; margin-top:13px; background:linear-gradient(to right,rgba(107,26,42,.06),transparent); padding:11px 15px; border-radius:10px; font-size:.92rem; font-weight:700; color:var(--burgundy); font-style:italic; }
+
+  /* PRAYER */
+  .prayer { text-align:center; padding:80px 20px; background:linear-gradient(160deg,#1A0508,var(--burgundy-dark) 50%,#1A0508); position:relative; overflow:hidden; }
+  .pglow { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%); width:500px;height:500px; background:radial-gradient(circle,rgba(201,146,42,.14) 0%,transparent 65%); border-radius:50%; pointer-events:none; }
+  .prayer .sec-label { color:var(--gold-light); }
+  .prayer .sec-title { color:#fff; }
+  .prayer .sec-rule { margin:0 auto 28px; }
+  .prayer-text { font-family:'Cormorant Garamond',serif; font-size:clamp(1.25rem,3.5vw,1.85rem); font-style:italic; font-weight:300; color:var(--gold-pale); max-width:480px; margin:0 auto 28px; line-height:1.65; }
+  .amen-line { font-size:.88rem; color:rgba(255,255,255,.6); margin-top:10px; }
+  .blessing { font-family:'Cinzel',serif; font-size:.95rem; letter-spacing:.28em; color:var(--gold); text-transform:uppercase; margin-top:26px; display:block; }
+
+  /* REVEAL */
+  .reveal { opacity:0; transform:translateY(34px); transition:opacity .7s ease,transform .7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:600px){
+    .sermon-box,.intro-card{ padding:30px 20px; }
+    .lesson{ padding:22px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="rays"></div>
+  <div class="flames" id="fc"></div>
+  <div class="dove-wrap">
+    <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 45 C40 25 10 35 5 55 C20 45 35 55 45 60 L55 72 C58 60 70 55 80 60 C85 50 90 38 60 45Z" fill="white" opacity="0.9"/>
+      <path d="M60 45 C80 25 110 30 115 50 C100 40 85 48 75 55 L65 68 C62 56 50 50 45 60 C40 48 42 36 60 45Z" fill="white" opacity="0.7"/>
+      <circle cx="50" cy="40" r="3" fill="white"/>
+    </svg>
+  </div>
+  <div style="position:relative;z-index:2;max-width:680px;">
+    <p class="h-eyebrow">Sunday Sermon Reflection</p>
+    <h1 class="h-title">Theme: Understanding <em>Pentecost</em></h1>
+    <div class="h-rule"></div>
+    <p class="h-speaker">Sermon by Rev Ruth Wambui</p>
+    <p class="h-reading">Reading: Acts 2:1–21 ff</p>
+    <a href="#content" class="h-btn">Read Sermon</a>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div id="content">
+
+<!-- INTRO -->
+<section style="padding:68px 0;">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="body">We cannot understand Pentecost without the Old Testament. Thus we begin by looking at Pentecost in both the Old and New Testaments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PART 1: OT -->
+<section style="background:var(--white);padding:68px 0;">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-label">Part 1</span>
+      <h2 class="sec-title">Pentecost in the Old Testament</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="card reveal">
+      <h3>✓ Feast of Weeks — <em>Chag Shavuot</em></h3>
+      <p class="body">It is called the Feast of Weeks because God commanded the people to count exactly seven weeks (49 days) from the harvest offering during the Feast of Unleavened Bread, and then celebrate on the 50th day.</p>
+      <div class="scr">
+        <span class="scr-ref">Leviticus 23:15–16</span>
+        <p>Count seven full weeks — then celebrate on the 50th day.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:16px;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--burgundy);margin-bottom:16px;">How It Was Celebrated</h3>
+      <p class="body" style="margin-bottom:4px;">According to Deuteronomy 16:9–12, the celebration had a few distinct characteristics:</p>
+    </div>
+
+    <div class="grid2 reveal">
+      <div class="card" style="border-top-color:var(--ember);">
+        <h3>🎉 A Joyful, Inclusive Gathering</h3>
+        <p class="body">It was a day of sacred assembly where no regular work was permitted. Deuteronomy explicitly emphasizes that this wasn't just for the religious elite; it was a massive, joyful community feast meant to include family, servants, foreigners, orphans, and widows.</p>
+      </div>
+      <div class="card" style="border-top-color:#8B60C0;">
+        <h3>⛓️ Remembering Slavery</h3>
+        <p class="body">God reminded the Israelites during this festival that they were once slaves in Egypt (Deuteronomy 16:12). Celebrating the harvest was a direct reminder that God had delivered them from bondage and given them a rich, fertile land of their own.</p>
+        <div class="scr">
+          <span class="scr-ref">Deuteronomy 16:12</span>
+          <p>Remember that you were slaves in Egypt, and follow carefully these decrees.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 2: NT -->
+<section style="padding:68px 0;">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-label">Part 2</span>
+      <h2 class="sec-title">Pentecost in the New Testament</h2>
+      <div class="sec-rule"></div>
+      <p class="body">In the New Testament — 400 years later:</p>
+      <ul style="margin:16px 0 0 20px;color:var(--text-mid);font-size:1.02rem;line-height:1.85;">
+        <li>Greek became the common global language.</li>
+        <li>Greek-speaking people started calling the holiday <em>Pentecost</em>, which literally means "Fiftieth Day" in Greek.</li>
+        <li>So it was already an annual Jewish festival.</li>
+        <li>Jesus stayed with them for forty days after His resurrection (Acts 1:3). The command was very simple: do not leave Jerusalem until something happens. So they stayed for 10 days praying to God, waiting for the festival.</li>
+      </ul>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline reveal">
+      <div class="tstep">
+        <div class="tdot">✝️</div>
+        <div class="tlabel">Resurrection</div>
+        <div class="tsub">Day 1</div>
+      </div>
+      <div class="tstep">
+        <div class="tdot">🚶</div>
+        <div class="tlabel">40 Days</div>
+        <div class="tsub">With Jesus</div>
+      </div>
+      <div class="tstep">
+        <div class="tdot">🙏</div>
+        <div class="tlabel">10 Days</div>
+        <div class="tsub">Praying & Waiting</div>
+      </div>
+      <div class="tstep">
+        <div class="tdot">🔥</div>
+        <div class="tlabel">Pentecost</div>
+        <div class="tsub">The 50th Day</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HAPPENED -->
+<section style="background:var(--white);padding:68px 0;">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-label">Acts 2</span>
+      <h2 class="sec-title">What Happened on This Day</h2>
+      <div class="sec-rule"></div>
+      <p class="body">God deliberately used this specific festival to do something completely new. They were all together in one place. Three extraordinary things happened:</p>
+    </div>
+
+    <div class="grid3 reveal">
+      <div class="ev wind">
+        <span class="ev-icon">🌬️</span>
+        <h3>1. A Violent Wind</h3>
+        <p>A sound like the blowing of a violent wind came from heaven and filled the house. The Greek word for wind is <em>spirit</em>. His presence as a Spirit filled the place.</p>
+        <span class="ev-ref">Acts 2:2</span>
+      </div>
+      <div class="ev fire">
+        <span class="ev-icon">🔥</span>
+        <h3>2. Tongues of Fire</h3>
+        <p>A fulfilment of Numbers 11:29. It never filled only some people. It never chose who to fill. It filled everybody — the young, the old, the educated, the uneducated.</p>
+        <span class="ev-ref">Acts 2:3 · Numbers 11:29</span>
+      </div>
+      <div class="ev lang">
+        <span class="ev-icon">🗣️</span>
+        <h3>3. Different Languages</h3>
+        <p>People spoke different languages but they understood each other. This was the direct reversal of the Tower of Babel (Genesis 11), where God confused human languages to scatter people. At Pentecost, God used languages to bring people together.</p>
+        <span class="ev-ref">Acts 2:4 · Genesis 11</span>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:28px;">
+      <p class="body">They could not understand how. Some started saying that they were drunk. That is when Peter spoke — already filled with the Holy Spirit — and boldly began to preach.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PETER'S SERMON -->
+<section style="padding:68px 0;">
+  <div class="wrap">
+    <div class="sermon-box reveal">
+      <span class="sec-label" style="color:var(--gold-light);">Acts 2:14–41</span>
+      <h2 class="sec-title">Peter's Sermon</h2>
+      <div class="sec-rule"></div>
+
+      <ul class="sermon-pts">
+        <li>Peter declares that what the crowd sees — the disciples speaking in many languages — is not drunkenness, but the fulfilment of Joel's prophecy (Joel 2:28–32).</li>
+        <li>He then shifts the message and preaches about Jesus of Nazareth — a man accredited by God. He performed miracles, but when He was handed over to them, they nailed Him on the cross.</li>
+        <li>And let it be known that God raised Him from the dead and He is now seated at His right hand. Peter quoted the words of David in Psalms 16 and 110.</li>
+        <li>He made it known that God has made this Jesus, Lord and Messiah.</li>
+      </ul>
+
+      <p class="body">It was a bold sermon, grounded in the Scriptures and empowered by the Spirit of God. They asked Peter what they could do and the message was simple:</p>
+
+      <div class="bquote">
+        <p>"Repent and be baptized."</p>
+      </div>
+
+      <span class="stat-pill">Around 3,000 were baptized that day</span>
+      <p class="body" style="margin-top:18px;color:rgba(255,255,255,.85);">This marked the birth of the church. Thus it is correct to say that <strong style="color:var(--gold-light);">Pentecost is the birthday of the church.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 LESSONS -->
+<section style="background:var(--white);padding:68px 0;">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-label">Application</span>
+      <h2 class="sec-title">3 Lessons About This Experience</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <!-- Lesson 1 -->
+    <div class="lesson reveal">
+      <div class="lnum">1</div>
+      <div class="lbody">
+        <h3>Tarry in Jerusalem Until He Comes</h3>
+        <span class="lref">Acts 1:4</span>
+        <p>Waiting is not passive. It is a time of active preparation, prayer, and expectation. Pentecost is also calling us believers to be patient and wait for His timing.</p>
+        <p>The disciples had no idea when the Holy Spirit would come. But the wait was worth it.</p>
+        <div class="lquote">"At His time, He will give you a new song."</div>
+      </div>
+    </div>
+
+    <!-- Lesson 2 -->
+    <div class="lesson reveal">
+      <div class="lnum">2</div>
+      <div class="lbody">
+        <h3>We Really Need the Holy Spirit</h3>
+        <span class="lref">Acts 2:2–4</span>
+        <p>We cannot keep operating on our weaknesses. The disciples and the apostles were hiding in those corners until the Holy Spirit came down upon them. And remember — this Peter is the one who denied Jesus three times. But after receiving the Holy Spirit, he speaks boldly of this Gospel.</p>
+        <p>In a changing world, we need men and women who are Spirit-filled. Who shall speak with boldness of what the Spirit wants people to hear — and not what they want to hear.</p>
+        <p>He is the source of empowerment. <strong>He fills people, not the building.</strong></p>
+        <div class="lquote">"He fills people, not the building."</div>
+        <div class="rq">🔥 Are you Spirit-filled?</div>
+      </div>
+    </div>
+
+    <!-- Lesson 3 -->
+    <div class="lesson reveal">
+      <div class="lnum">3</div>
+      <div class="lbody">
+        <h3>We Need Each Other</h3>
+        <span class="lref">Acts 2:42 ff</span>
+        <p>Spiritual breakthroughs thrive in an atmosphere of unity. There is something about joining forces that moves spiritual mountains.</p>
+        <p>The language miracle symbolizes the connectedness God desires for His people; language is meant to bind people together for a common purpose.</p>
+        <p>What is striking about Acts 2 is that it begins with togetherness and it ends with togetherness. Acts 2:42 ff speaks of shared teaching, shared meals, shared prayers, even shared possessions.</p>
+        <p>The Holy Spirit united their hearts in singleness of purpose and mission. Don't you long for that kind of unity in the Church today? Simply, we cannot accomplish individually the mission that God has given us.</p>
+        <div class="scr" style="margin-top:10px;">
+          <span class="scr-ref">Acts 2:42</span>
+          <p>They devoted themselves to the apostles' teaching and to fellowship, to the breaking of bread and to prayer.</p>
+        </div>
+        <div class="lquote">"You can't pick up a grain of rice with just one finger."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRAYER -->
+<section class="prayer">
+  <div class="pglow"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="reveal">
+      <span class="sec-label">Closing Prayer</span>
+      <h2 class="sec-title">Prayer</h2>
+      <div class="sec-rule" style="margin:0 auto 28px;"></div>
+      <p class="prayer-text">
+        "So help us God.<br>
+        Fill us with Your Spirit<br>
+        in Jesus' name. Amen."
+      </p>
+      <div style="font-size:1.5rem;margin:10px 0;opacity:.55;">🕊️ 🔥 🕊️</div>
+      <span class="blessing">Blessings Galore</span>
+    </div>
+  </div>
+</section>
+
+</div><!-- /content -->
+
+<script>
+  // Flame particles
+  const fc = document.getElementById('fc');
+  const cols = ['#FF6B20','#FF9A38','#FFB84A','#D4521A','#E8702A'];
+  for(let i=0;i<22;i++){
+    const f = document.createElement('div');
+    f.className='flame';
+    const s=12+Math.random()*28;
+    f.style.cssText=`width:${s}px;height:${s*1.6}px;left:${Math.random()*100}%;background:radial-gradient(ellipse,${cols[Math.floor(Math.random()*cols.length)]},transparent);animation-duration:${4+Math.random()*7}s;animation-delay:${Math.random()*6}s;`;
+    fc.appendChild(f);
+  }
+  // Scroll reveal
+  const obs = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
